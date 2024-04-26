@@ -6,6 +6,26 @@
     <title>Form Validation</title>
 </head>
 <body>
-    
+    <script>
+        function Data(){
+            //fname = document.fm.fname.value
+            fname = document.getElementById('fname1').value;
+            age = document.getElementById('age1').value
+            console.log(fname)
+            document.getElementById('f').innerHTML = fname
+            document.getElementById('a').innerHTML = age
+
+        }
+    </script>
+    <h1>firstName: <span id="f"></span></h1>
+    <h1>age: <span id="a"></span></h1>
+    <form name="fm">
+        fname:<input type="text" name="fname" id="fname1"/>
+        age : <input type="number" name="age" id="age1"/>
+
+    </form>
+    <br>
+    <input type="submit" onclick="data()"/>
+
 </body>
 </html>

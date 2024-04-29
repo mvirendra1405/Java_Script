@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+</head>
+<body>
+    <script>
+        function Data(){
+        fname = document.getElementById('fname1').value
+            age = parseInt(document.getElementById('age1').value)
+            contact = document.getElementById('contact1').value
+            console.log(typeof(age))
+
+            if(fname=="" || fname == null){
+                alert("fname required")
+            }
+            else if (age == "" || age == null || age<0){
+                alert('age also required bhai/behen...age can not be negative')
+            }
+            else if (contact.length !=10){
+                alert('length of contact shoud be 10 digits')
+            }
+            else{
+               alert('data is successfully submitted')
+            }
+            
+            document.getElementById('f').innerHTML = fname
+            document.getElementById('a').innerHTML = age
+        }
+
+        function contact(){
+        contact = document.getElementById('contact').value
+        //document.getElementById('h11').innerHTML = contact
+         if(contact.length>10){
+            alert("you can not enter number more than 10")
+         }
+        }
+        
+    </script>
+    <!--
+        <h1 id = "h11"><h1> 
+    -->
+    <h1>firstName: <span id="f"></span></h1> 
+    <h1>age: <span id="a"></span></h1>
+   
+    <form name="fm">
+        fname:<input type="text" name="fname" id="fname1"/>
+        <br><br>
+        age : <input type="number" name="age" id="age1"/>
+        <br><br>
+        contact: <input type="number" name="contact" id="contact1"/>
+    </form>
+    <br>
+        <input type="submit" onclick="Data()"/>
+
+</body>
+</html>

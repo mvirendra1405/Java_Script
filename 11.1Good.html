@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body id="b">
+
+  <h1 id="h1">Hey</h1>
+  
+  <button onclick="Change()">Click Here</button>
+  <script>
+    var i = 0 
+    function Change(){
+      bgc = ['red','yellow','pink','black']
+      tc = ['blue','red','orange','white']
+      text = ['Good Morning','Good AfterNoon','Good Evening','Good Night']
+
+      var data = document.getElementById('b');
+      data.style.backgroundColor = bgc[i]
+      data.style.color = tc[i]
+
+      document.getElementById('h1').innerHTML = text[i]
+
+      i++
+
+      if (i>=tc.length){
+        i=0
+      }
+
+    }
+  </script>
+</body>
+</html>

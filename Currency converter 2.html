@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency convertor</title>
+</head>
+<body>
+    <script>
+        //document.write(from,to)
+        fetch(`https://api.exchangerate-api.com/v4/latest/INR`)
+        .then(re=>re.json())
+        .then(data=>{
+            d = data['rates']
+            for(i in d){
+                document.getElementById('from').innerHTML += `<option value="${i}">${i}</Option>`
+                document.getElementById('from').innerHTML += `<option value="${i}">${i}</Option>`
+            }
+        })
+        function Convertor(){
+        from = document.fm.from.value;
+        to = document.fm.to.value;
+        amt = parseFloat(document.fm.amt.value);
+        // document.write(from,to)
+        fetch(`https://api.exchangerate-api.com/v4/latest/${from}`)
+        .then(re=>re.json())
+        .then(data=>{
+            console.log(data['rates'][to])
+            camount = data['rates'][to]
+            document.getElementById('h1').innerHTML = camount*amt;
+        })
+        }
+        <form name="fm">
+            From:
+            <select name="from" id="from">
+            
+            </select>
+            <br><br>
+
+            mount
+    </script>
+    
+</body>
+</html>

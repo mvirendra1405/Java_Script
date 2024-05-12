@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>assingment</title>
+</head>
+<body>
+    <script>
+        function factorial(n) {
+    if (n === 0 || n === 1) {
+        return 1;
+    } else {
+        return n * factorial(n - 1);
+    }
+}
+
+// Taking input from the user
+let num = parseInt(prompt("Enter a number:"));
+
+// Checking if the number is negative
+if (num < 0) {
+    console.log("Factorial does not exist for negative numbers");
+} else {
+    console.log("The factorial of", num, "is", factorial(num));
+}
+
+    </script>
+    
+</body>
+</html>

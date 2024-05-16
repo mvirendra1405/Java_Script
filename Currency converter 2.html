@@ -1,64 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Currency convertor</title>
+    <style>
+        * {
+            margin: 0;
+        padding: 0;        }
+        body{
+            background-color: pink;
+        }
+
+        .container {
+            /* display: flex; */
+            margin: 100px 0 0vw 20vw; 
+            padding: 20px;
+            width: 40vw;
+            height: 50vh;
+            background-color: red;
+            justify-content: center;
+            align-items: center;
+            border-radius:10px ;
+
+        }
+
+        /* .container{
+            
+            padding: 30px;
+            border-radius: 10px;
+        } */
+
+        .item {
+            background-color: red;
+        }
+        #from{
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+         .item2 {
+            background-color: red;
+            
+        } 
+        #to{
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+        }
+         input{
+            width: 97%;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+
 </head>
+
 <body>
-    <script>
-        //document.write(from,to)
-        fetch(`https://api.exchangerate-api.com/v4/latest/INR`)
-        .then(re=>re.json())
-        .then(data=>{
+
+
+
+    <div class="container">
+
+        <div class="item">
+            <form name="fm">
+                From:
+                <br>
+                <select  id="from">
+
+                </select>
+                <br><br>
+                To:
+                <br>
+                <select name="to" id="to">
+
+                </select>
+                <br><br>
+                Amount:
+                <br>
+                <input type="number" placeholder="Enter Amount To Convert" name="amt" />
+
+            </form>
+        </div>
+        <br><br>
+        <div class="item2">
+
+            <input type="submit" value="Convert" Onclick="Convertor()" />
+
+            <h1>Converted Amount : <span id="h1"></span></h1>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+</body>
+<script>
+    //document.write(from,to)
+    fetch(`https://api.exchangerate-api.com/v4/latest/INR`)
+        .then(re => re.json())
+        .then(data => {
             d = data['rates']
-            for(i in d){
+            for (i in d) {
                 document.getElementById('from').innerHTML += `<option value="${i}">${i}</Option>`
                 document.getElementById('to').innerHTML += `<option value="${i}">${i}</Option>`
             }
         })
-        function Convertor(){
+    function Convertor() {
         from = document.fm.from.value;
         to = document.fm.to.value;
         amt = parseFloat(document.fm.amt.value);
         // document.write(from,to)
         fetch(`https://api.exchangerate-api.com/v4/latest/${from}`)
-        .then(re=>re.json())
-        .then(data=>{
-            console.log(data['rates'][to])
-            camount = data['rates'][to]
-            document.getElementById('h1').innerHTML = camount*amt;
-        })
-        }
-    </script>
-    <style>
-        *
-        {
-            background: rgb(242, 149, 149);
-        }
-    </style>
-    
-        <form name="fm">
-            From:
-            <select name="from" id="from">
-            
-            </select>
-            <br><br>
-            To:
-            <select name="to"id="to">
+            .then(re => re.json())
+            .then(data => {
+                console.log(data['rates'][to])
+                camount = data['rates'][to]
+                document.getElementById('h1').innerHTML = camount * amt;
+            })
+    }
+</script>
 
-            </select>
-            <br><br>
-            Amount:<input type="number" placeholder="Enter Amount To Convert" name="amt"/>
-
-            </form>
-            <input type="submit" value="Convert" Onclick = "Convertor()"/>
-
-            <h1>Converted Amount : <span id="h1"></span></h1>
-
-
-
-            
-    
-</body>
 </html>
